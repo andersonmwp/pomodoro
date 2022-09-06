@@ -29,6 +29,7 @@ body {
   width: 400px;
   border-radius: 10px;
   background-color: #EC6F66;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,.2);
 }
 
 .timer-container {
@@ -85,4 +86,19 @@ body {
   color: #fff;
   margin-top: 20px;
   font-size: 1.25rem;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: .75rem;
+  color: #fff;
+}
+
+.footer a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
 }
