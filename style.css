@@ -67,10 +67,6 @@ body {
   cursor: pointer;
 }
 
-.btn:active {
-  transform: scale(0,9);
-}
-
 .ciclos, .descritivo {
   text-align: center;
   font-family: 'Roboto', sans-serif;
