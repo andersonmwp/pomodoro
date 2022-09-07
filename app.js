@@ -1,9 +1,10 @@
 const minutos = document.querySelector('.minutos');
 const segundos = document.querySelector('.segundos');
-const btn = document.querySelector('.btn');
+const btnIniciar = document.querySelector('.btnIniciar');
+const btnPausar = document.querySelector('.btnPausar');
 const ciclos = document.querySelector('.ciclos');
 
-let minuto = 1;
+let minuto = 24;
 let segundo = 0;
 let relogio;
 
@@ -12,9 +13,11 @@ function iniciarRelogio(){
     timer();
     stopCiclos();
   }, 1000);
+
+  btnIniciar.setAttribute('disabled', '');
 }
 
-btn.addEventListener('click', iniciarRelogio);
+btnIniciar.addEventListener('click', iniciarRelogio);
 
 function timer() {
   segundo = segundo - 1;
@@ -36,6 +39,14 @@ function timer() {
     segundos.innerText = segundo;
   }
 }
+
+function stopTimer() {
+  clearInterval(relogio);
+
+  btnIniciar.removeAttribute('disabled');
+}
+
+btnPausar.addEventListener('click', stopTimer)
 
 let ciclo = 1;
 
