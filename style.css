@@ -9,6 +9,10 @@ body {
   background-image: linear-gradient(#a73737, #7a2828);
 }
 
+body.active {
+  background-image: linear-gradient(#4b6cb7, #182848);
+}
+
 .titulo {
   font-family: 'Montserrat', sans-serif;
   font-size: 3rem;
@@ -30,6 +34,10 @@ body {
   border-radius: 10px;
   background-color: #EC6F66;
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,.2);
+}
+
+.container.active {
+  background-color: #49a09d;
 }
 
 .timer-container {
