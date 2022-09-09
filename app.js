@@ -58,25 +58,33 @@ function stopCiclos() {
   if(minuto === 0 && segundo === 0) {
     clearInterval(relogio);
 
-    if(count === 3) {
-      longBreak();
-    } else if(changeCycle === 0) {
-      shortBreak(); 
+    if(changeCycle === 0) {
+      Break(); 
     } else {
       returnTimer();
     }
   }
 }
 
-function shortBreak() {
+function Break() {
   container.classList.add('active');
   body.classList.add('active');
   btnIniciar.removeAttribute('disabled');
 
   descritivoCiclo.innerText = 'Faça uma pausa!';
-  minutos.innerText = '05';
-  minuto = 0;
-  segundo = 10;
+
+  if(count === 3) {
+    minutos.innerText = '15';
+    minuto = 0;
+    segundo = 10;
+    count = 0;
+  } else {
+    minutos.innerText = '05';
+    minuto = 0;
+    segundo = 10;
+    count++;
+  }
+  
   changeCycle = 1;
 }
 
@@ -93,18 +101,4 @@ function returnTimer() {
   ciclo++;
   ciclos.innerText = '#' + ciclo;
   changeCycle = 0;
-  count++;
-}
-
-function longBreak() {
-  container.classList.add('active');
-  body.classList.add('active');
-  btnIniciar.removeAttribute('disabled');
-
-  descritivoCiclo.innerText = 'Faça uma pausa!';
-  minutos.innerText = '15';
-  minuto = 0;
-  segundo = 10;
-
-  count = 0;
 }
