@@ -1,67 +1,67 @@
-const minutos = document.querySelector('.minutos');
-const segundos = document.querySelector('.segundos');
-const btnIniciar = document.querySelector('.btnIniciar');
-const btnPausar = document.querySelector('.btnPausar');
-const ciclos = document.querySelector('.ciclos');
+const minutes = document.querySelector('.minutos');
+const seconds = document.querySelector('.segundos');
+const btnInit = document.querySelector('.btnIniciar');
+const btnPause = document.querySelector('.btnPausar');
+const cycles = document.querySelector('.ciclos');
 const container = document.querySelector('.container');
 const body = document.querySelector('body');
-const descritivoCiclo = document.querySelector('.descritivo');
+const description = document.querySelector('.descritivo');
 
-let minuto = 0;
-let segundo = 10;
-let relogio;
+let minute = 0;
+let second = 10;
+let clock;
 
-function iniciarRelogio(){
-  relogio = setInterval(() => {
+function initTimer(){
+  clock = setInterval(() => {
     timer();
-    stopCiclos();
+    stopCycle();
   }, 1000);
 
-  btnIniciar.setAttribute('disabled', '');
+  btnInit.setAttribute('disabled', '');
 }
 
-btnIniciar.addEventListener('click', iniciarRelogio);
+btnInit.addEventListener('click', initTimer);
 
 function timer() {
-  segundo = segundo - 1;
+  second = second - 1;
 
-  if(segundo < 0) {
-    segundo = 59;
-    minuto = minuto - 1;
+  if(second < 0) {
+    second = 59;
+    minute = minute - 1;
   }
 
-  if(minuto >= 10){
-    minutos.innerText = minuto;
+  if(minute >= 10){
+    minutes.innerText = minute;
   } else {
-    minutos.innerText = '0' + minuto;
+    minutes.innerText = '0' + minute;
   }
 
-  if(segundo < 10) {
-    segundos.innerText = '0' + segundo;
+  if(second < 10) {
+    seconds.innerText = '0' + second;
   } else {
-    segundos.innerText = segundo;
+    seconds.innerText = second;
   }
 }
 
 function stopTimer() {
-  clearInterval(relogio);
-  btnIniciar.removeAttribute('disabled');
+  clearInterval(clock);
+  btnInit.removeAttribute('disabled');
 }
 
-btnPausar.addEventListener('click', stopTimer)
+btnPause.addEventListener('click', stopTimer)
 
-let ciclo = 1;
+let cycle = 1;
 let count = 0;
-let changeCycle = 0;
+let changeCycle = false;
 
-function stopCiclos() {
-  if(minuto === 0 && segundo === 0) {
-    clearInterval(relogio);
+function stopCycle() {
+  if(minute === 0 && second === 0) {
+    clearInterval(clock);
 
-    if(changeCycle === 0) {
+    if(changeCycle === false) {
       Break(); 
     } else {
-      returnTimer();
+      resetTimer();
     }
   }
 }
@@ -69,36 +69,35 @@ function stopCiclos() {
 function Break() {
   container.classList.add('active');
   body.classList.add('active');
-  btnIniciar.removeAttribute('disabled');
-
-  descritivoCiclo.innerText = 'Faça uma pausa!';
+  btnInit.removeAttribute('disabled');
+  description.innerText = 'Faça uma pausa!';
 
   if(count === 3) {
-    minutos.innerText = '15';
-    minuto = 0;
-    segundo = 10;
+    minutes.innerText = '15';
+    minute = 0;
+    second = 10;
     count = 0;
   } else {
-    minutos.innerText = '05';
-    minuto = 0;
-    segundo = 10;
+    minutes.innerText = '05';
+    minute = 0;
+    second = 10;
     count++;
   }
   
-  changeCycle = 1;
+  changeCycle = true;
 }
 
-function returnTimer() {
+function resetTimer() {
   container.classList.remove('active');
   body.classList.remove('active');
-  btnIniciar.removeAttribute('disabled');
+  btnInit.removeAttribute('disabled');
 
-  descritivoCiclo.innerText = 'Mantenha o foco!';
-  minutos.innerText = '25';
-  minuto = 0;
-  segundo = 10;  
+  description.innerText = 'Mantenha o foco!';
+  minutes.innerText = '25';
+  minute = 0;
+  second = 10;  
   
-  ciclo++;
-  ciclos.innerText = '#' + ciclo;
-  changeCycle = 0;
+  cycle++;
+  cycles.innerText = '#' + cycle;
+  changeCycle = false;
 }
