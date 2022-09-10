@@ -1,4 +1,4 @@
-<h1>Pommodoro Timer</h1>
+<h1>Pomodoro Timer</h1>
 
 <p>Projeto criado para colocar em prática meus estudos de javascript.</p>
 <p>Neste projeto trabalhei minha lógica para fazer o cronômetro retroativo, trabalhei com setInterval para criar o efeito do relógio e funções para manipular o DOM.</p>
