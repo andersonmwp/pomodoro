@@ -1,7 +1,7 @@
 const minutes = document.querySelector('.minutos');
 const seconds = document.querySelector('.segundos');
 const btnInit = document.querySelector('.btnIniciar');
-const btnAudio = document.querySelector('.btnAudio');
+const btnAudio = new Audio('./audio/audio-button.mp3');
 
 let minute = 25;
 let second = 0;
@@ -24,23 +24,18 @@ function timer() {
   if(second < 0) {
     second = 59;
     minute = minute - 1;
-  }
-
-  if(minute >= 10){
-    minutes.innerText = minute;
+  } if(minute >= 10){
+      minutes.innerText = minute;
   } else {
     minutes.innerText = '0' + minute;
-  }
-
-  if(second < 10) {
-    seconds.innerText = '0' + second;
+  } if(second < 10) {
+      seconds.innerText = '0' + second;
   } else {
-    seconds.innerText = second;
-  }
+      seconds.innerText = second;
+  }  
 }
 
 const btnPause = document.querySelector('.btnPausar');
-const finishAudio = document.querySelector('.finishAudio');
 
 function stopTimer() {
   clearInterval(clock);
@@ -55,7 +50,7 @@ function stopCycle() {
     clearInterval(clock);
 
     if(changeCycle === false) {
-      Break(); 
+      timeBreak(); 
     } else {
       resetTimer();
     }
@@ -66,12 +61,12 @@ const cycles = document.querySelector('.ciclos');
 const container = document.querySelector('.container');
 const body = document.querySelector('body');
 const description = document.querySelector('.descritivo');
-
+const finishAudio = new Audio('./audio/audio_bell.mp3');
 let cycle = 1;
 let count = 0;
 let changeCycle = false;
 
-function Break() {
+function timeBreak() {
   container.classList.add('active');
   body.classList.add('active');
   btnInit.removeAttribute('disabled');
