@@ -1,17 +1,12 @@
 const minutes = document.querySelector('.minutos');
 const seconds = document.querySelector('.segundos');
 const btnInit = document.querySelector('.btnIniciar');
-const btnPause = document.querySelector('.btnPausar');
-const cycles = document.querySelector('.ciclos');
-const container = document.querySelector('.container');
-const body = document.querySelector('body');
-const description = document.querySelector('.descritivo');
 
 let minute = 0;
 let second = 10;
 let clock;
 
-function initTimer(){
+function initClock(){
   clock = setInterval(() => {
     timer();
     stopCycle();
@@ -20,7 +15,7 @@ function initTimer(){
   btnInit.setAttribute('disabled', '');
 }
 
-btnInit.addEventListener('click', initTimer);
+btnInit.addEventListener('click', initClock);
 
 function timer() {
   second = second - 1;
@@ -43,16 +38,14 @@ function timer() {
   }
 }
 
+const btnPause = document.querySelector('.btnPausar');
+
 function stopTimer() {
   clearInterval(clock);
   btnInit.removeAttribute('disabled');
 }
 
 btnPause.addEventListener('click', stopTimer)
-
-let cycle = 1;
-let count = 0;
-let changeCycle = false;
 
 function stopCycle() {
   if(minute === 0 && second === 0) {
@@ -66,11 +59,20 @@ function stopCycle() {
   }
 }
 
+const cycles = document.querySelector('.ciclos');
+const container = document.querySelector('.container');
+const body = document.querySelector('body');
+const description = document.querySelector('.descritivo');
+
+let cycle = 1;
+let count = 0;
+let changeCycle = false;
+
 function Break() {
   container.classList.add('active');
   body.classList.add('active');
   btnInit.removeAttribute('disabled');
-  description.innerText = 'Faça uma pausa!';
+  description.innerText = 'Tempo para uma pausa!';
 
   if(count === 3) {
     minutes.innerText = '15';
@@ -92,7 +94,7 @@ function resetTimer() {
   body.classList.remove('active');
   btnInit.removeAttribute('disabled');
 
-  description.innerText = 'Mantenha o foco!';
+  description.innerText = 'Hora de focar!';
   minutes.innerText = '25';
   minute = 0;
   second = 10;  
