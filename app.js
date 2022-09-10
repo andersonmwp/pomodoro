@@ -3,8 +3,8 @@ const seconds = document.querySelector('.segundos');
 const btnInit = document.querySelector('.btnIniciar');
 const btnAudio = document.querySelector('.btnAudio');
 
-let minute = 0;
-let second = 10;
+let minute = 25;
+let second = 0;
 let clock;
 
 function initClock(){
@@ -79,13 +79,11 @@ function Break() {
 
   if(count === 3) {
     minutes.innerText = '15';
-    minute = 0;
-    second = 10;
+    minute = 15;
     count = 0;
   } else {
     minutes.innerText = '05';
-    minute = 0;
-    second = 10;
+    minute = 5;
     count++;
   }
 
@@ -100,10 +98,8 @@ function resetTimer() {
 
   description.innerText = 'Hora de focar!';
   minutes.innerText = '25';
-  minute = 0;
-  second = 10;  
+  minute = 25;
   finishAudio.play();
-  
   cycle++;
   cycles.innerText = '#' + cycle;
   changeCycle = false;
