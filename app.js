@@ -1,6 +1,7 @@
 const minutes = document.querySelector('.minutos');
 const seconds = document.querySelector('.segundos');
 const btnInit = document.querySelector('.btnIniciar');
+const btnAudio = document.querySelector('.btnAudio');
 
 let minute = 0;
 let second = 10;
@@ -11,7 +12,7 @@ function initClock(){
     timer();
     stopCycle();
   }, 1000);
-
+  btnAudio.play();
   btnInit.setAttribute('disabled', '');
 }
 
@@ -39,13 +40,15 @@ function timer() {
 }
 
 const btnPause = document.querySelector('.btnPausar');
+const finishAudio = document.querySelector('.finishAudio');
 
 function stopTimer() {
   clearInterval(clock);
+  btnAudio.play();
   btnInit.removeAttribute('disabled');
 }
 
-btnPause.addEventListener('click', stopTimer)
+btnPause.addEventListener('click', stopTimer);
 
 function stopCycle() {
   if(minute === 0 && second === 0) {
@@ -85,7 +88,8 @@ function Break() {
     second = 10;
     count++;
   }
-  
+
+  finishAudio.play();
   changeCycle = true;
 }
 
@@ -98,6 +102,7 @@ function resetTimer() {
   minutes.innerText = '25';
   minute = 0;
   second = 10;  
+  finishAudio.play();
   
   cycle++;
   cycles.innerText = '#' + cycle;
